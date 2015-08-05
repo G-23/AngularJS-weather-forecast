@@ -1,5 +1,5 @@
 # AngularJS-weather-forecast
-==================================================
+
 A simple weather forecast app which performs an http request to http://openweathermap.org.
 
 Try it live: http://simonedeluca.github.io/AngularJS-weather-forecast/app/
