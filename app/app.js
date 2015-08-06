@@ -16,7 +16,7 @@
 			if($scope.city) {
 				Weather.requestWeather($scope.city)
 				.then(function(result) {
-					if($scope.city == result.data.name) {
+					if($scope.city.toLowerCase() == result.data.name.toLowerCase()) {
 						$scope.weatherForecast = result.data;
 						$scope.requestError = false;
 						$scope.cityNotFound = false;
