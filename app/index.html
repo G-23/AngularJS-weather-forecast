@@ -20,12 +20,18 @@
 			<div ng-controller="weatherController">
 				<form name ="weatherForm" class="form-inline">
 					<input type="text" class="form-control" value="" ng-model="city" ng-minlength="1" placeholder="City: e.g. London" required/>
-					<button type="submit" class="btn btn-primary" ng-click='getWeather()'>Search</button>
-					<div>
-						<small>Tip: try to add the country code after the city name. (e.g. Tokyo, JP)</small>
-					</div>
-
+					<button type="submit" class="btn btn-primary" ng-click='getWeather()'>Search</button>			
 				</form>
+				<div ng-show="requestError"  class="alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only">Error:</span>
+					There was an error in your request, please try again in few minutes.
+				</div>
+				<div ng-show="cityNotFound"  class="alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only">Error:</span>
+					Sorry the city that you've searched for could not be found.
+				</div>
 				<div class="result" ng-show="weatherForecast.name">
 					<h2>{{weatherForecast.name}}</h2>
 					<h3><img src="http://openweathermap.org/img/w/{{weatherForecast.weather[0].icon}}.png">{{weatherForecast.main.temp}} &#8451;</h3>
@@ -38,8 +44,6 @@
 		</main>
 
 		<script src="bower_components/angular/angular.js"></script>
-		<script src="bower_components/angular-route/angular-route.js"></script>
-		<script src="bower_components/angular-xeditable/js/xeditable.js"></script>
 		<script src="app.js"></script>
 		<script src="components/version/version.js"></script>
 		<script src="components/version/version-directive.js"></script>

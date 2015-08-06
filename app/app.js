@@ -9,11 +9,23 @@
 
 	weatherApp.controller('weatherController', function($scope, $http, Weather) {
 		$scope.weatherForecast = {};
+		$scope.requestError = false;
+		$scope.cityNotFound = false;
 
 		$scope.getWeather = function() {
 			if($scope.city) {
-				Weather.requestWeather($scope.city).then(function(result) {
-					$scope.weatherForecast = result.data;
+				Weather.requestWeather($scope.city)
+				.then(function(result) {
+					if($scope.city == result.data.name) {
+						$scope.weatherForecast = result.data;
+						$scope.requestError = false;
+						$scope.cityNotFound = false;
+						console.log($scope.weatherForecast);
+					} else {
+						$scope.cityNotFound = true;
+					}
+				}, function() {
+					$scope.requestError = true;
 				});
 			}
 		};
