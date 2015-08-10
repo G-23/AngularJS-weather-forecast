@@ -1,4 +1,4 @@
-# AngularJS-weather-forecast
+# AngularJS weather forecast
 
 A simple weather forecast app which performs an http request to http://openweathermap.org.
 
